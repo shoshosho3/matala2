@@ -12,11 +12,11 @@ def this_length(num,current,word):
     print(word)
 
 def section(word,num,current):
-  for tag in range(0,3):
+  for tag in range(0,256):
     in_section(word+"\\"+format(tag,"#04x"),num,current)
 
 def in_section(he,num,current):
-  for leng in range(0,3):
+  for leng in range(0,256):
     word=he+"\\"+format(leng,"#04x")
     if leng==0:
       this_length(num,current+1,word)
@@ -25,10 +25,10 @@ def in_section(he,num,current):
 
 def insec(num,current,word,num1,current1):
   if num!=current:
-    for val in range(0,3):
+    for val in range(0,256):
       insec(num,current+1,word+"\\"+format(val,"#04x"),num1,current1)
   else:
     this_length(num1,current1+1,word)
 
-for num in range(0,3):
+for num in range(0,256):
   this_length(num,0,header()+"\\"+format(num,"#04x"))
